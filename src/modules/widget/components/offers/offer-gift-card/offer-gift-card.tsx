@@ -9,7 +9,7 @@ import './offer-gift-card.less';
 
 interface OfferGiftCardProps {
     offer: PrizeoutOffer;
-    onClickHandler: () => void;
+    onClickHandler?: () => void;
 }
 
 export const OfferGiftCard: React.FC<OfferGiftCardProps> = ({ offer, onClickHandler }): React.ReactElement => {

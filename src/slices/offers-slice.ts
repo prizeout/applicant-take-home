@@ -697,10 +697,6 @@ type PrizeoutOfferValueOptions = {
     value_in_cents: number;
 };
 
-type OffersRequest = {
-    prizeoutSessionId: string;
-};
-
 type SelectedPrizeoutOffers = Record<string, boolean>;
 
 export const offersSlice = createSlice({

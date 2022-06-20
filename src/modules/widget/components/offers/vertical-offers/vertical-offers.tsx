@@ -6,6 +6,7 @@ import { OfferGiftCard } from '../offer-gift-card/offer-gift-card';
 import './vertical-offers.less';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../../../../store';
+import { toggleOfferFromCart } from '../../../../../slices/checkout-slice';
 
 interface OfferView {
     offers: PrizeoutOffer[];
@@ -20,6 +21,7 @@ const VerticalOffers: React.FC<OfferView> = ({ offers, viewSettings }): React.Re
 
     const offerClickHandler = (offer: PrizeoutOffer) => {
         dispatch(toggleOffer(offer));
+        dispatch(toggleOfferFromCart(offer));
     };
 
     const returnOffers = () => {

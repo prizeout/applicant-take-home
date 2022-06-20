@@ -12,11 +12,11 @@ import store from './store';
 import 'normalize.css';
 import './index.less';
 
-Sentry.init({
-    dsn: 'https://631e6984cd70426ebf4b99e4faf612c0@o925290.ingest.sentry.io/5874076',
-    integrations: [new Integrations.BrowserTracing()],
-    tracesSampleRate: 0.5,
-});
+// Sentry.init({
+//     dsn: 'https://631e6984cd70426ebf4b99e4faf612c0@o925290.ingest.sentry.io/5874076',
+//     integrations: [new Integrations.BrowserTracing()],
+//     tracesSampleRate: 0.5,
+// });
 
 // Need to add this for accessibility, to hide other content from screen readers if modal is opened
 ReactModal.setAppElement('#root');

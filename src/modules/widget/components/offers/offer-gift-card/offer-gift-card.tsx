@@ -6,7 +6,7 @@ import { PrizeoutOffer } from '../../../../../slices/offers-slice';
 import './offer-gift-card.less';
 
 interface OfferGiftCardProps {
-    selected: string;
+    selected: PrizeoutOffer;
     offer: PrizeoutOffer;
     onClickHandler: (arg0: PrizeoutOffer) => void;
 }
@@ -23,7 +23,7 @@ export const OfferGiftCard: React.FC<OfferGiftCardProps> = ({
     const offerValue = firstGiftCard.display_bonus;
     const classes: string = Classnames('offer-gift-card', {
         // 'selected-offer-gift-card': activeOfferId === firstGiftCard.checkout_value_id,
-        'selected-offer-gift-card': offer.name === selected,
+        'selected-offer-gift-card': offer === selected,
     });
 
     return (

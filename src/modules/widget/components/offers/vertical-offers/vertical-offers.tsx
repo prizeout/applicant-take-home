@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import Classnames from 'classnames';
 import { PrizeoutOffer, PrizeoutOfferSettings } from '../../../../../slices/offers-slice';
+import { setGiftCard } from '../../../../../slices/checkout-slice';
 import { OfferGiftCard } from '../offer-gift-card/offer-gift-card';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../../../../../store';
 
 import './vertical-offers.less';
 
@@ -11,14 +14,16 @@ interface OfferView {
 }
 
 const VerticalOffers: React.FC<OfferView> = ({ offers, viewSettings }): React.ReactElement => {
-    const [selected, setSelected] = useState<string>('');
+    const dispatch = useDispatch<AppDispatch>();
+    const [selected, setSelected] = useState<PrizeoutOffer>();
     const heading = viewSettings.title || 'Recommended';
     const subtitle = viewSettings.subtitle || null;
     const classes: string = Classnames('vertical-offers', { '--has-subtitle': subtitle });
 
     // TODO: update offerClickHandler
     const offerClickHandler = (offer: PrizeoutOffer) => {
-        setSelected(offer.name);
+        setSelected(offer);
+        dispatch(setGiftCard(offer));
     };
 
     const returnOffers = () => {

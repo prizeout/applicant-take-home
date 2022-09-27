@@ -16,14 +16,14 @@ export const OfferGiftCard: React.FC<OfferGiftCardProps> = ({
     offer,
     onClickHandler,
 }): React.ReactElement => {
-    // let activeOfferId;
+    let activeOfferId;
 
     const firstGiftCard = offer.giftcard_list[0];
     const offerType = firstGiftCard.display_monetary_bonus ? 'monetary' : 'percentage';
     const offerValue = firstGiftCard.display_bonus;
     const classes: string = Classnames('offer-gift-card', {
-        // 'selected-offer-gift-card': activeOfferId === firstGiftCard.checkout_value_id,
-        'selected-offer-gift-card': offer === selected,
+        'selected-gift-card': offer === selected,
+        'selected-offer-gift-card': activeOfferId === firstGiftCard.checkout_value_id,
     });
 
     return (

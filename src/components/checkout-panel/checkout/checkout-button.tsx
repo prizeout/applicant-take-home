@@ -7,7 +7,9 @@ import './checkout-button.less';
 const CheckoutButton: React.FC = (): React.ReactElement => {
     const buttonText = 'Prizeout Gift Card';
     // TODO: update buttonHandler
-    // const buttonHandler = () => {};
+    const buttonHandler = () => {
+        console.log('buttonHandler');
+    };
 
     return (
         <>

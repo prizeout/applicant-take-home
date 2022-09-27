@@ -5,14 +5,14 @@ import CheckoutButton from './checkout-button';
 
 import './checkout.less';
 
+// TODO: display gift card offers
+// TODO: include value selection
 const CheckoutPanelView: React.FC = (): React.ReactElement => {
     return (
         <section className="checkout">
             <div className="grid grid--top-bottom grid--stretch-top">
                 <div className="grid__item no-scrollbars">
-                    <section className="checkout__brand">
-                        Display Gift Card Here
-                    </section>
+                    <section className="checkout__brand">Display Gift Card Here</section>
                 </div>
                 <div className="grid__item">
                     <section className="checkout__calculation">

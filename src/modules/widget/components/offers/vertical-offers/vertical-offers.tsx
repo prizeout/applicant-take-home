@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Classnames from 'classnames';
 import { PrizeoutOffer, PrizeoutOfferSettings } from '../../../../../slices/offers-slice';
 import { OfferGiftCard } from '../offer-gift-card/offer-gift-card';
@@ -11,11 +11,15 @@ interface OfferView {
 }
 
 const VerticalOffers: React.FC<OfferView> = ({ offers, viewSettings }): React.ReactElement => {
+    const [selected, setSelected] = useState<string>('');
     const heading = viewSettings.title || 'Recommended';
     const subtitle = viewSettings.subtitle || null;
     const classes: string = Classnames('vertical-offers', { '--has-subtitle': subtitle });
 
-    const offerClickHandler = (offer: PrizeoutOffer) => {};
+    // TODO: update offerClickHandler
+    const offerClickHandler = (offer: PrizeoutOffer) => {
+        setSelected(offer.name);
+    };
 
     const returnOffers = () => {
         return offers.map((offer) => (
@@ -23,6 +27,7 @@ const VerticalOffers: React.FC<OfferView> = ({ offers, viewSettings }): React.Re
                 key={`${heading}-${offer.name}`}
                 offer={offer}
                 onClickHandler={() => offerClickHandler(offer)}
+                selected={selected}
             />
         ));
     };

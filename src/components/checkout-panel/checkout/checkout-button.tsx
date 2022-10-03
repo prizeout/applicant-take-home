@@ -15,7 +15,7 @@ const CheckoutButton: React.FC<CheckoutButtonProps> = ({ selected }): React.Reac
     // TODO: update buttonHandler
     const buttonHandler = () => {
         console.log('buttonHandler');
-        console.log(selected)
+        console.log(selected);
         // onSubmit(event);
     };
 

@@ -9,21 +9,21 @@ import './checkout-panel.less';
 
 export const CheckoutPanel: React.FC = (): React.ReactElement => {
     const isCheckoutPanelSide = useAppSelector(selectCheckoutIsSide),
+        giftCard = useAppSelector(selectGiftCard),
         classes: string = Classnames(
             `checkout-panel`,
             { 'checkout-panel--side': isCheckoutPanelSide },
             { 'checkout-panel--bottom': !isCheckoutPanelSide },
         );
 
-    const giftCard = useAppSelector(selectGiftCard);
-    console.log(giftCard);
-
     return (
         <>
-            <section className={classes}>
-                <CheckoutPanelView />
-                <CheckoutConfirmationPanelView />
-            </section>
+            {giftCard && (
+                <section className={classes}>
+                    <CheckoutPanelView giftCard={giftCard} />
+                    <CheckoutConfirmationPanelView />
+                </section>
+            )}
         </>
     );
 };

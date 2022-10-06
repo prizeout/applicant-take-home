@@ -12,19 +12,12 @@ interface CheckoutButtonProps {
 const CheckoutButton: React.FC<CheckoutButtonProps> = ({ selected }): React.ReactElement => {
     const buttonText = 'Prizeout Gift Card';
     const isDisabled = selected === '';
-    // TODO: update buttonHandler
-    const buttonHandler = () => {
-        console.log('buttonHandler');
-        console.log(selected);
-        // onSubmit(event);
-    };
 
     return (
         <>
             <Button
                 ariaLabel="Prizeout your gift card"
                 color={`confirm`}
-                onClick={buttonHandler}
                 size="medium"
                 text={buttonText}
                 type="submit"

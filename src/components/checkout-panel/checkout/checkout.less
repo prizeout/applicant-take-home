@@ -6,8 +6,53 @@
 		overflow: auto;
 	}
 
-	.selected-offer {
+	.flex-form {
+		display: flex;
+		justify-content: space-evenly;
+		flex-wrap: wrap;
+		margin-bottom: 5px;
+	}
+
+	.calculation {
+		margin: 10px;
+		padding: 5px;
+		border: 2px solid #E0E2E5;
+		border-radius: 8px;
 		font-weight: bold;
+
+		.blue {
+			color: #30A8FF;
+		}
+
+		p {
+			display: flex;
+			justify-content: space-between;
+		}
+	}
+
+	input[type="radio"] {
+		display: none;
+	}
+
+	.form-button {
+		background-color: #E0E2E5;
+		border: 1px solid #E0E2E5;
+		border-radius: 8px;
+		padding: 10px;
+		margin: 5px 0px;
+		width: 90px;
+		text-align: center;
+	}
+
+	.selected-offer {
+		background-color: #30A8FF !important;
+		border: 1px solid #30A8FF;
+		border-radius: 8px;
+		padding: 10px;
+		margin: 5px 0px;
+		width: 90px;
+		text-align: center;
+		color: white;
 	}
 }
 

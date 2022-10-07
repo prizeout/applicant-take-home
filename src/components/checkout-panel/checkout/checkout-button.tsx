@@ -1,7 +1,6 @@
 // import React, { useState } from 'react';
 import React from 'react';
 import { Button } from '../../common';
-import { FormProps } from './checkout';
 
 import './checkout-button.less';
 

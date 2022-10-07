@@ -20,7 +20,6 @@ const VerticalOffers: React.FC<OfferView> = ({ offers, viewSettings }): React.Re
     const subtitle = viewSettings.subtitle || null;
     const classes: string = Classnames('vertical-offers', { '--has-subtitle': subtitle });
 
-    // TODO: update offerClickHandler
     const offerClickHandler = (offer: PrizeoutOffer) => {
         setSelected(offer);
         dispatch(setGiftCard(offer));

@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import Classnames from 'classnames';
 import { PrizeoutOffer, PrizeoutOfferValueOptions } from '../../../slices/offers-slice';
 import checkoutPanelViewWrapper from '../view-wrapper';
-import { currencyFormatter } from '../../common';
+import { currencyFormatter, fetchData, PurchaseData } from '../../common';
 
 import CheckoutButton from './checkout-button';
 
@@ -17,13 +17,12 @@ export interface FormProps {
     option: string;
 }
 
-// TODO: display gift card offers
-// TODO: include value selection
 const CheckoutPanelView: React.FC<CheckoutPanelProps> = ({ giftCard }): React.ReactElement => {
     const { name, currency_code, giftcard_list } = giftCard;
 
     const [selectedOption, setSelectedOption] = useState<string>('');
     const [selectedGiftCard, setSelectedGiftCard] = useState<PrizeoutOfferValueOptions>();
+    const [purchaseData, setPurchaseData] = useState<PurchaseData>();
 
     const { register, handleSubmit } = useForm();
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -32,8 +31,7 @@ const CheckoutPanelView: React.FC<CheckoutPanelProps> = ({ giftCard }): React.Re
     };
 
     const onSubmit = (data: FormProps) => {
-        console.log(selectedOption)
-        console.log(data)
+        setPurchaseData(fetchData(name, selectedGiftCard));
     };
 
     const getCalculations = () => {
@@ -116,7 +114,21 @@ const CheckoutPanelView: React.FC<CheckoutPanelProps> = ({ giftCard }): React.Re
                     <div className="grid__item">
                         <section className="checkout__calculation">
                             {selectedOption.length !== 0 && returnCalculations()}
-                            <CheckoutButton selected={selectedOption} />
+                            {!purchaseData && <CheckoutButton selected={selectedOption} />}
+                            {purchaseData && (
+                                <>
+                                    {purchaseData.status == '200' && (
+                                        <div className="status-200">
+                                            Success! Please check your email for your receipt.
+                                        </div>
+                                    )}
+                                    {purchaseData.status == '400' && (
+                                        <div className="status-400">
+                                            Something went wrong... Please try again later.
+                                        </div>
+                                    )}
+                                </>
+                            )}
                         </section>
                     </div>
                 </form>

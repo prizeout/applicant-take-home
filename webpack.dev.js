@@ -7,10 +7,10 @@ module.exports = merge(common, {
   mode: 'development',
   devtool: 'inline-source-map',
   devServer: {
-      contentBase: './dist',
+      static: './dist',
       historyApiFallback: true,
-      disableHostCheck: true,
-      // host:'local',
+      // disableHostCheck: true,
+      host:'local',
       hot: true,
       port: 8169
   },

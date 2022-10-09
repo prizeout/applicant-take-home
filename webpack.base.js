@@ -21,26 +21,16 @@ module.exports = {
 			{
                 test: /\.(js|jsx)$/,
                 enforce: 'pre',
-				// use: ['source-map-loader'],
-				loader: 'babel-loader',
+				use: ['source-map-loader', {loader: 'babel-loader'}],
                 exclude: /node_modules/,
-                options: {
-                    presets: [
-                        '@babel/preset-env',
-                        '@babel/preset-react'
-					],
-					'plugins': [
-						'@babel/plugin-proposal-class-properties'
-					]
-                }
             },
 			{
 				test: /\.(less|css)$/,
 				use: [
 					'style-loader', 
-					'css-loader', 
-					'less-loader'
-				]
+					{loader: 'css-loader'}, 
+					{loader: 'less-loader'},
+				],
 			}
         ]
 	},

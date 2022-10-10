@@ -8,4 +8,65 @@
 	}
 }
 
+.checkout-options {
+	width: 100%;
+}
 
+.checkout-options .grid {
+	grid-template-rows: 2em 1fr;
+}
+
+.checkout-options-buttons .grid {
+	width: 100%;
+	grid-template-columns: repeat(4, 1fr);
+	gap: .5em;
+}
+
+.checkout-radio {
+	width: 100%;
+	
+	display: flex;
+	justify-content: flex-start;
+	align-content: center;
+	flex-wrap: nowrap;
+}
+
+.checkout-radio input {
+	display: none;
+}
+
+.checkout-radio label {
+	background-color: var(--color-grey-300);
+	flex-grow: 10;
+	text-align: center;
+	padding: .5em 1em;
+	border-radius: 10px;
+}
+
+.checkout-radio input:checked + label {
+	background-color: var(--color-blue-300);
+}
+
+.checkout-cost-summary {
+	background-color: var(--color-grey-100);
+	padding: 1em;
+}
+
+.checkout-cost-summary .grid {
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1em 1em 1em;
+	grid-row-gap: .5em;
+}
+
+.checkout-cost-summary label {
+	text-align: left;
+	white-space: nowrap;
+}
+
+.checkout-cost-summary .value {
+	text-align: right;
+}
+
+.checkout-cost-summary .bonus-line {
+	color: var(--color-blue-300);
+}

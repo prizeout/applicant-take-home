@@ -1,6 +1,5 @@
 import React from 'react';
 import { PrizeoutOfferValueOptions } from '../../../slices/offers-slice';
-import CheckoutOptionButton from './checkout-option-button';
 
 import './checkout.less';
 

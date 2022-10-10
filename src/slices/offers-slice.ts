@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { findAllByDisplayValue } from '@testing-library/react';
 import { RootState } from '../store';
 
 // Define a type for the slice state
@@ -700,7 +701,10 @@ export type PrizeoutOfferValueOptions = {
 };
 
 type OffersRequest = {
-    prizeoutSessionId: string;
+    checkout_value_id: string;
+    cost_in_cents: number;
+    name: string;
+    value_in_cents: number;
 };
 
 export const offersSlice = createSlice({
@@ -727,5 +731,33 @@ export const getCurrentGiftCard = ({ offers }: RootState): PrizeoutOfferValueOpt
     return offers.activeOffer?.giftcard_list[offers.giftCardIndex];
 };
 export const getCurrentGiftCardIndex = ({ offers }: RootState): number => offers.giftCardIndex;
+export const getCurrentOfferRequest = ({ offers }: RootState): OffersRequest => {
+    if (offers.activeOffer == null) {
+        return null;
+    }
+
+    const giftcard = offers.activeOffer.giftcard_list[offers.giftCardIndex];
+
+    let bonus = 0;
+    let finalValue = giftcard.cost_in_cents;
+
+    if (giftcard.display_bonus != null || giftcard.display_monetary_bonus != null) {
+        if (giftcard.display_bonus == null) {
+            bonus = giftcard.display_monetary_bonus;
+        } else {
+            const bonusPercent = giftcard.display_bonus / 10;
+            bonus = Math.round(giftcard.cost_in_cents * bonusPercent) / 100;
+        }
+    }
+
+    finalValue = giftcard.cost_in_cents + bonus;
+
+    return {
+        checkout_value_id: giftcard.checkout_value_id,
+        cost_in_cents: giftcard.cost_in_cents,
+        name: offers.activeOffer.name,
+        value_in_cents: finalValue,
+    };
+};
 
 export default offersSlice.reducer;

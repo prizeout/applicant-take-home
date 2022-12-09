@@ -69,6 +69,12 @@ Starting the application will render a list of gift card offers available to a g
 
 In the project directory, you can run:
 
+### `nvm use`
+
+Switches your node environment to the version defined in the .nvmrc
+
+[More information about NVM can be found here.](https://github.com/nvm-sh/nvm)
+
 ### `npm start`
 
 Runs the app in the development mode.<br />

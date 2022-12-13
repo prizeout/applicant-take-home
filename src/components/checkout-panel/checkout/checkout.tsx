@@ -20,24 +20,32 @@ import { useAppSelector } from '../../../hooks';
 
 const CheckoutPanelView: React.FC = (): React.ReactElement => {
     const activeOffer = useAppSelector(selectActiveOffer);
-    const { image_url, name } = activeOffer || {};
+    if (!activeOffer) {
+        return (
+            <section className='checkout'>
+                <h3>Please Select a Gift Card</h3>
+            </section>
+        )
+    };
+
+    const { image_url, name } = activeOffer;
+
     return (
         <section className="checkout">
             <div className="grid grid--top-bottom grid--stretch-top">
-                <div className="grid__item">
-                    <section className="checkout__brand">Display Gift Card Here</section>
-                    <GiftCard altText={name} imgUrl={image_url} name={name} />
-                    <h4 className="mb-s">Select Redemption Amount</h4>
+                <div className="grid__item column-gap">
+                    <h3>{name}</h3>
+                    <GiftCard altText={name} imgUrl={image_url} />
                     <PriceOptionGrid />
                     <PriceDetail />
                 </div>
-                <div className="grid__item">
+                < div className="grid__item" >
                     <section className="checkout__calculation">
                         <CheckoutButton />
                     </section>
-                </div>
-            </div>
-        </section>
+                </div >
+            </div >
+        </section >
     );
 };
 

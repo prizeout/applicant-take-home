@@ -14,7 +14,7 @@
     "type": "git",
     "url": "git+https://github.com/prizeout/Applicant-Take-Home.git"
   },
-  "author": "Your Name Here",
+  "author": "Paul Lujan",
   "dependencies": {
     "@babel/runtime": "7.12.5",
     "@fingerprintjs/fingerprintjs": "^3.3.0",

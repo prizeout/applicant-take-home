@@ -31,20 +31,23 @@ const PriceGrid: React.FC = () => {
     };
 
     return (
-        <div className="price-option-grid">
-            {giftcard_list.map(({ checkout_value_id, cost_in_cents }) => {
-                return (
-                    <PriceOptionButton
-                        onClick={() => {
-                            handleClick(checkout_value_id);
-                        }}
-                        isSelected={checkout_value_id === selectedCheckoutValueId}
-                        key={checkout_value_id}
-                        priceText={getPriceStringFromCents(cost_in_cents)}
-                    />
-                );
-            })}
-        </div>
+        <>
+            <h4>Select Redemption Amount</h4>
+            <div className="price-option-grid">
+                {giftcard_list.map(({ checkout_value_id, cost_in_cents }) => {
+                    return (
+                        <PriceOptionButton
+                            onClick={() => {
+                                handleClick(checkout_value_id);
+                            }}
+                            isSelected={checkout_value_id === selectedCheckoutValueId}
+                            key={checkout_value_id}
+                            priceText={getPriceStringFromCents(cost_in_cents)}
+                        />
+                    );
+                })}
+            </div>
+        </>
     );
 };
 

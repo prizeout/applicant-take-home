@@ -10,7 +10,7 @@ interface GiftCardProps {
     altText?: string;
     className?: string;
     imgUrl?: string;
-    name: string;
+    name?: string;
     value?: number;
 }
 
@@ -24,7 +24,9 @@ export const GiftCard: React.FC<GiftCardProps> = ({ name, value, imgUrl, altText
             <GiftCardImage imgUrl={imageUrl} altText={imageAltText} />
             <div className="gift-card__row">
                 <p className="gift-card__name">
-                    <strong>{name}</strong>
+                    {name ?
+                        <strong>{name}</strong> : ''
+                    }
                 </p>
                 {value && <span className="gift-card__value">{value}</span>}
             </div>

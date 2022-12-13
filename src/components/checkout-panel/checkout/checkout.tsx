@@ -22,11 +22,11 @@ const CheckoutPanelView: React.FC = (): React.ReactElement => {
     const activeOffer = useAppSelector(selectActiveOffer);
     if (!activeOffer) {
         return (
-            <section className='checkout'>
+            <section className="checkout">
                 <h3>Please Select a Gift Card</h3>
             </section>
-        )
-    };
+        );
+    }
 
     const { image_url, name } = activeOffer;
 
@@ -39,13 +39,13 @@ const CheckoutPanelView: React.FC = (): React.ReactElement => {
                     <PriceOptionGrid />
                     <PriceDetail />
                 </div>
-                < div className="grid__item" >
+                <div className="grid__item">
                     <section className="checkout__calculation">
                         <CheckoutButton />
                     </section>
-                </div >
-            </div >
-        </section >
+                </div>
+            </div>
+        </section>
     );
 };
 

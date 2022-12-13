@@ -33,6 +33,6 @@ export const GiftCard: React.FC<GiftCardProps> = ({ name, value, imgUrl, altText
 GiftCard.propTypes = {
     altText: PropTypes.string,
     imgUrl: PropTypes.string,
-    name: PropTypes.string.isRequired,
+    name: PropTypes.string,
     value: PropTypes.number,
 };

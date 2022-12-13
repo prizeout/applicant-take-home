@@ -1,7 +1,13 @@
 import React from 'react';
 
 /* Slices */
-import { selectGiftCardCost, selectGiftCardDisplayBonus, selectGiftCardPrizoutBonus, selectGiftCardValue, selectSelectedGiftCard, } from '../../../slices/checkout-slice';
+import {
+    selectGiftCardCost,
+    selectGiftCardDisplayBonus,
+    selectGiftCardPrizoutBonus,
+    selectGiftCardValue,
+    selectSelectedGiftCard,
+} from '../../../slices/checkout-slice';
 
 /* Styles */
 import './price-detail.less';
@@ -21,21 +27,21 @@ const PriceDetail: React.FC = (): React.ReactElement => {
     }
 
     return (
-        <div className='price-detail'>
-            <div className='row'>
+        <div className="price-detail">
+            <div className="row">
                 <h4>Redemption Amount</h4>
                 <h4>{giftCardCost}</h4>
             </div>
-            <div className='row blue-letters'>
+            <div className="row blue-letters">
                 <h4>Prizeout Bonus (+{giftCardDisplayBonus}%)</h4>
                 <h4>{giftCardPrizoutBonus}</h4>
             </div>
-            <div className='row'>
+            <div className="row">
                 <h4>You Get</h4>
                 <h4>{giftCardValue}</h4>
             </div>
         </div>
-    )
+    );
 };
 
 export default PriceDetail;

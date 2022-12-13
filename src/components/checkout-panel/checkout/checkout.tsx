@@ -27,7 +27,7 @@ const CheckoutPanelView: React.FC = (): React.ReactElement => {
                 <div className="grid__item">
                     <section className="checkout__brand">Display Gift Card Here</section>
                     <GiftCard altText={name} imgUrl={image_url} name={name} />
-                    <h4 className='mb-s'>Select Redemption Amount</h4>
+                    <h4 className="mb-s">Select Redemption Amount</h4>
                     <PriceOptionGrid />
                     <PriceDetail />
                 </div>

@@ -14,6 +14,7 @@ import PriceOptionButton from './price-option-button';
 /* Utitlities */
 import { AppDispatch } from '../../../store';
 import { useAppSelector } from '../../../hooks';
+import { getPriceStringFromCents } from '../../../utils/calculations/money';
 
 const PriceGrid: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
@@ -24,10 +25,6 @@ const PriceGrid: React.FC = () => {
     }
 
     const { giftcard_list } = activeOffer;
-
-    const getCostString = (costInCents: number): string => {
-        return `$${(costInCents / 100).toFixed(2)}`;
-    };
 
     const handleClick = (selectedCheckoutValueId: string) => {
         dispatch(setSelectedCheckoutValueId(selectedCheckoutValueId));
@@ -43,7 +40,7 @@ const PriceGrid: React.FC = () => {
                         }}
                         isSelected={checkout_value_id === selectedCheckoutValueId}
                         key={checkout_value_id}
-                        priceText={getCostString(cost_in_cents)}
+                        priceText={getPriceStringFromCents(cost_in_cents)}
                     />
                 );
             })}

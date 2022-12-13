@@ -12,7 +12,7 @@ import './checkout.less';
 /* UI Components */
 import CheckoutButton from './checkout-button';
 import { GiftCard } from '../../common';
-import PriceOptionButton from './price-option-button';
+import PriceOptionGrid from './price-option-grid';
 
 /* Utitlities */
 import { useAppSelector } from '../../../hooks';
@@ -26,7 +26,7 @@ const CheckoutPanelView: React.FC = (): React.ReactElement => {
                 <div className="grid__item">
                     <section className="checkout__brand">Display Gift Card Here</section>
                     <GiftCard altText={name} imgUrl={image_url} name={name} />
-                    <PriceOptionButton priceText='$15.99' isSelected={true} />
+                    <PriceOptionGrid />
                 </div>
                 <div className="grid__item">
                     <section className="checkout__calculation">

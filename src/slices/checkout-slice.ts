@@ -4,6 +4,7 @@ import type { RootState } from '../store';
 export interface CheckoutSlice {
     isCollapsedCheckoutPanelOpen: boolean;
     loading: boolean;
+    selectedCheckoutValueId?: string;
     view: ViewEnum;
 }
 
@@ -12,6 +13,7 @@ export type ViewEnum = 'checkout' | 'checkout-confirmation';
 export const checkoutInitialState: CheckoutSlice = {
     isCollapsedCheckoutPanelOpen: false,
     loading: false,
+    selectedCheckoutValueId: null,
     view: 'checkout',
 };
 
@@ -22,6 +24,9 @@ export const checkoutSlice = createSlice({
         setCheckoutView(state, action: PayloadAction<ViewEnum>) {
             state.view = action.payload;
         },
+        setSelectedCheckoutValueId(state, action: PayloadAction<string>) {
+            state.selectedCheckoutValueId = action.payload;
+        },
         toggleIsCollapsedCheckoutPanelOpen(state) {
             state.isCollapsedCheckoutPanelOpen = !state.isCollapsedCheckoutPanelOpen;
         },
@@ -31,11 +36,15 @@ export const checkoutSlice = createSlice({
     },
 });
 
-export const { setCheckoutView, toggleIsCollapsedCheckoutPanelOpen, toggleIsLoading } = checkoutSlice.actions;
+export const { setCheckoutView, setSelectedCheckoutValueId, toggleIsCollapsedCheckoutPanelOpen, toggleIsLoading } =
+    checkoutSlice.actions;
 
 export const selectLoading = ({ checkout: { loading } }: RootState): boolean => loading;
 
 export const selectCheckoutView = ({ checkout: { view } }: RootState): ViewEnum => view;
+
+export const selectSelectedCheckoutValueId = ({ checkout: { selectedCheckoutValueId } }: RootState): string =>
+    selectedCheckoutValueId;
 
 export const selectIsCollapsedCheckoutPanelOpen = ({
     checkout: { isCollapsedCheckoutPanelOpen },

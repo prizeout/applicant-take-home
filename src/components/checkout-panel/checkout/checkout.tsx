@@ -10,10 +10,10 @@ import { selectActiveOffer } from '../../../slices/offers-slice';
 import './checkout.less';
 
 /* UI Components */
-import CheckoutButton from './checkout-button';
+import CheckoutButton from '../checkout-button/checkout-button';
 import { GiftCard } from '../../common';
-import PriceDetail from './price-detail';
-import PriceOptionGrid from './price-option-grid';
+import PriceDetail from '../price-detail/price-detail';
+import PriceOptionGrid from '../price-option-grid/price-option-grid';
 
 /* Utitlities */
 import { useAppSelector } from '../../../hooks';

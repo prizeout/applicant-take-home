@@ -9,7 +9,7 @@ import { selectActiveOffer } from '../../../slices/offers-slice';
 import './price-option-grid.less';
 
 /* UI Components */
-import PriceOptionButton from './price-option-button';
+import PriceOptionButton from '../price-option-button/price-option-button';
 
 /* Utitlities */
 import { AppDispatch } from '../../../store';

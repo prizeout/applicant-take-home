@@ -1,5 +1,7 @@
 # Prizeout Applicant Take Home Test
 
+This app can be accessed at https://prizeout-take-home-paul-lujan.netlify.app/.
+
 ## Instructions
 
 This take-home challenge is geared toward testing one's ability to code in a React application. The application is built using TypeScript, React, Redux Toolkit, JSX and Less CSS.
@@ -96,6 +98,10 @@ Builds the app for production to the `dist` folder.<br />
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
 The build is minified and the filenames include the hashes.
+
+## Deployment
+
+This app is hosted on Netlify at https://prizeout-take-home-paul-lujan.netlify.app/. When code is merged to the `main` branch it is automatically deployed to production.
 
 ## Code Standards
 

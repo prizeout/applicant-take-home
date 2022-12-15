@@ -7,7 +7,7 @@ import './button.less';
 interface ButtonProps {
     ariaLabel: string;
     className?: string;
-    color?: string;
+    color?: 'primary' | 'secondary' | 'confirm' | undefined;
     icon?: string;
     id?: string;
     isDisabled?: boolean;
@@ -15,7 +15,7 @@ interface ButtonProps {
     isLink?: boolean;
     isLoading?: boolean;
     onClick?: () => void;
-    size?: string;
+    size?: 'small' | 'medium' | undefined;
     text?: string;
     type?: 'submit' | 'reset' | 'button' | undefined;
 }
@@ -73,7 +73,7 @@ export const Button: React.FC<ButtonProps> = ({
 Button.propTypes = {
     ariaLabel: PropTypes.string.isRequired,
     className: PropTypes.string,
-    color: PropTypes.string,
+    color: PropTypes.oneOf(['primary', 'secondary', 'confirm', undefined]),
     icon: PropTypes.string,
     id: PropTypes.string,
     isDisabled: PropTypes.bool,
@@ -81,7 +81,7 @@ Button.propTypes = {
     isLink: PropTypes.bool,
     isLoading: PropTypes.bool,
     onClick: PropTypes.func,
-    size: PropTypes.string,
+    size: PropTypes.oneOf(['small', 'medium', undefined]),
     text: PropTypes.string,
     type: PropTypes.oneOf(['submit', 'reset', 'button', undefined]),
 };

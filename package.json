@@ -7,6 +7,7 @@
     "lint": "npx eslint ./src --fix",
     "start": "webpack-dev-server --config webpack.dev.js --port 8069 --host 0.0.0.0",
     "test": "jest --config ./jest.config.js --runInBand --no-cache",
+    "test:update-snapshots": "jest --updateSnapshot",
     "build": "webpack --config webpack.prod.js",
     "prepare": "husky install"
   },
@@ -14,7 +15,7 @@
     "type": "git",
     "url": "git+https://github.com/prizeout/Applicant-Take-Home.git"
   },
-  "author": "Your Name Here",
+  "author": "Paul Lujan",
   "dependencies": {
     "@babel/runtime": "7.12.5",
     "@fingerprintjs/fingerprintjs": "^3.3.0",

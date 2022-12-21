@@ -27,7 +27,7 @@ const PriceDetail: React.FC = (): React.ReactElement => {
     }
 
     return (
-        <div className="price-detail">
+        <div className="price-detail" data-testid="price-detail">
             <div className="row">
                 <h4>Redemption Amount</h4>
                 <h4>{giftCardCost}</h4>

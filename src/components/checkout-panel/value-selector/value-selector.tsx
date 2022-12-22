@@ -20,9 +20,10 @@ const ValueSelector: React.FC = (): React.ReactElement => {
             <div className="value-selector__option-container">
                 {selectedOffer.giftcard_list.map((gc) => (
                     <ValueOption
+                        giftcardId={gc.checkout_value_id}
                         key={gc.cost_in_cents}
-                        value={gc.cost_in_cents}
                         selected={gc.checkout_value_id === selectedOfferValue.checkout_value_id}
+                        value={gc.cost_in_cents}
                     />
                 ))}
             </div>

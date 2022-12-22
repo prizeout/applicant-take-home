@@ -2,6 +2,7 @@ import React from 'react';
 import { useAppSelector } from '../../../hooks';
 import { selectSelectedOffer } from '../../../slices/offers-slice';
 import { GiftCard } from '../../common';
+import ValueSelector from '../value-selector/value-selector';
 import checkoutPanelViewWrapper from '../view-wrapper';
 import CheckoutButton from './checkout-button';
 
@@ -23,6 +24,11 @@ const CheckoutPanelView: React.FC = (): React.ReactElement => {
                                 className="offer"
                             />
                         )}
+                    </section>
+                </div>
+                <div className="grid__item">
+                    <section className="checkout__value">
+                        <ValueSelector />
                     </section>
                 </div>
                 <div className="grid__item">

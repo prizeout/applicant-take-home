@@ -688,7 +688,7 @@ export type PrizeoutOffer = {
     tag: string;
 };
 
-type PrizeoutOfferValueOptions = {
+export type PrizeoutOfferValueOptions = {
     checkout_value_id: string;
     cost_in_cents: number;
     display_bonus?: number;
@@ -718,12 +718,17 @@ export const { toggleOfferId } = offersSlice.actions;
 
 export const selectOffers = ({ offers }: RootState): PrizeoutOffers => offers.offers;
 export const selectSelectedOfferId = ({ offers }: RootState): string => offers.selectedOfferId;
-export const selectSelectedOffer = ({ offers }: RootState): PrizeoutOffer => {
+export const selectSelectedOffer = ({ offers }: RootState): PrizeoutOffer | undefined => {
     return offers.offers
         .reduce((prev, curr) => [...prev, ...curr.data], [] as PrizeoutOffer[])
         .find((offer) =>
             offer.giftcard_list.some(({ checkout_value_id }) => checkout_value_id === offers.selectedOfferId),
         );
+};
+export const selectSelectedOfferValue = (state: RootState): PrizeoutOfferValueOptions | undefined => {
+    return selectSelectedOffer(state)?.giftcard_list.find(
+        ({ checkout_value_id }) => checkout_value_id === state.offers.selectedOfferId,
+    );
 };
 
 export default offersSlice.reducer;

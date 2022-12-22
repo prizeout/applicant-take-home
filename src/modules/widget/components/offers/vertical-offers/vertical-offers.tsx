@@ -1,6 +1,6 @@
 import React from 'react';
 import Classnames from 'classnames';
-import { PrizeoutOffer, PrizeoutOfferSettings } from '../../../../../slices/offers-slice';
+import { PrizeoutOffer, PrizeoutOfferSettings, toggleOfferId } from '../../../../../slices/offers-slice';
 import { OfferGiftCard } from '../offer-gift-card/offer-gift-card';
 import { useAppSelector } from '../../../../../hooks';
 import { selectIsCheckoutPanelCollapsed } from '../../../../../slices/common-slice';
@@ -22,6 +22,8 @@ const VerticalOffers: React.FC<OfferView> = ({ offers, viewSettings }): React.Re
     const dispatch = useDispatch<AppDispatch>();
 
     const offerClickHandler = (offer: PrizeoutOffer) => {
+        dispatch(toggleOfferId(offer.giftcard_list[0].checkout_value_id));
+
         if (isCheckoutPanelCollapsedView) {
             dispatch(toggleIsCollapsedCheckoutPanelOpen());
         }

@@ -1,9 +1,10 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../store';
 
 // Define a type for the slice state
 export interface OffersState {
     offers?: PrizeoutOffers;
+    selectedOfferId?: string;
 }
 
 // Define the initial state
@@ -702,9 +703,20 @@ type OffersRequest = {
 export const offersSlice = createSlice({
     initialState: offersInitialState,
     name: 'offers',
-    reducers: {},
+    reducers: {
+        toggleOfferId(state, action: PayloadAction<string>) {
+            if (state.selectedOfferId === action.payload) {
+                state.selectedOfferId = undefined;
+            } else {
+                state.selectedOfferId = action.payload;
+            }
+        }
+    },
 });
 
+export const { toggleOfferId } = offersSlice.actions;
+
 export const selectOffers = ({ offers }: RootState): PrizeoutOffers => offers.offers;
+export const selectSelectedOfferId = ({ offers }: RootState): string => offers.selectedOfferId;
 
 export default offersSlice.reducer;

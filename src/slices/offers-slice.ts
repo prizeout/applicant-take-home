@@ -710,7 +710,7 @@ export const offersSlice = createSlice({
             } else {
                 state.selectedOfferId = action.payload;
             }
-        }
+        },
     },
 });
 

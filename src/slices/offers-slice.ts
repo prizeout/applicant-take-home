@@ -718,5 +718,12 @@ export const { toggleOfferId } = offersSlice.actions;
 
 export const selectOffers = ({ offers }: RootState): PrizeoutOffers => offers.offers;
 export const selectSelectedOfferId = ({ offers }: RootState): string => offers.selectedOfferId;
+export const selectSelectedOffer = ({ offers }: RootState): PrizeoutOffer => {
+    return offers.offers
+        .reduce((prev, curr) => [...prev, ...curr.data], [] as PrizeoutOffer[])
+        .find((offer) =>
+            offer.giftcard_list.some(({ checkout_value_id }) => checkout_value_id === offers.selectedOfferId),
+        );
+};
 
 export default offersSlice.reducer;

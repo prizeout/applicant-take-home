@@ -27,22 +27,24 @@ const Modal: React.FC<ModalProps> = ({ children, onOk, title }): React.ReactElem
     }
 
     return (
-        <div className="modal">
-            <div className="modal__inner">
-                <div className="modal__content">
-                    <h2>{title}</h2>
-                    {children}
-                </div>
-                <div className="modal__buttons">
-                    <div className="button">
-                        <Button
-                            ariaLabel="okay"
-                            color="primary"
-                            onClick={handleOkClick}
-                            size="medium"
-                            text="Okay"
-                            type="submit"
-                        ></Button>
+        <div className="modal-wrapper z-index-modal">
+            <div className="modal">
+                <div className="modal__inner">
+                    <div className="modal__content">
+                        <h2>{title}</h2>
+                        {children}
+                    </div>
+                    <div className="modal__buttons">
+                        <div className="button">
+                            <Button
+                                ariaLabel="okay"
+                                color="primary"
+                                onClick={handleOkClick}
+                                size="medium"
+                                text="Okay"
+                                type="submit"
+                            ></Button>
+                        </div>
                     </div>
                 </div>
             </div>

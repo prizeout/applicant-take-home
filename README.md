@@ -18,8 +18,6 @@ This app can be accessed at https://prizeout-take-home-paul-lujan.netlify.app/.
     - [npm run lint](#npm-run-lint)
     - [npm run build](#npm-run-build)
   - [Deployment](#deployment)
-  - [Code Standards](#code-standards)
-    - [Importing Modules](#importing-modules)
 
 <!-- /TOC -->
 
@@ -123,29 +121,3 @@ The build is minified and the filenames include the hashes.
 ## Deployment
 
 This app is hosted on Netlify at https://prizeout-take-home-paul-lujan.netlify.app/. When code is merged to the `main` branch it is automatically deployed to production.
-
-## Code Standards
-
-### Importing Modules
-
-When importing modules into React components please split them into subcategories. The available subcategories are HOC (Higher Order Components), Redux, Styles, UI Components, and Utitlities. Please keep the categories alphabetized and the imports within the categories reasonably organized. When in doubt, alphabetize them. Here is an example:
-
-```
-import React from 'react';
-
-/* HOC */
-import checkoutPanelViewWrapper from '../view-wrapper';
-
-/* Slices */
-import { selectActiveOffer } from '../../../slices/offers-slice';
-
-/* Styles */
-import './checkout.less';
-
-/* UI Components */
-import CheckoutButton from './checkout-button';
-import { GiftCard } from '../../common';
-
-/* Utitlities */
-import { useAppSelector } from '../../../hooks';
-```

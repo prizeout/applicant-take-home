@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './modal.less';
 import { Button } from '../form-components';
+import { hideModal, selectIsHidden } from '../../../slices/modal-slice';
+import { useAppSelector } from '../../../hooks';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../../../store';
 
 interface ModalProps {
     onOk?: () => void;
@@ -8,10 +12,11 @@ interface ModalProps {
 }
 
 const Modal: React.FC<ModalProps> = ({ children, onOk, title }): React.ReactElement => {
-    const [isHidden, setIsHidden] = useState(false);
+    const dispatch = useDispatch<AppDispatch>();
+    const isHidden = useAppSelector(selectIsHidden);
 
     const handleOkClick = () => {
-        setIsHidden(true);
+        dispatch(hideModal());
         if (onOk) {
             onOk();
         }

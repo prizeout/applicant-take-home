@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button } from '../../common';
 import { useDispatch } from 'react-redux';
 import { requestCheckout } from '../../../slices/checkout-slice';
+import { showModal } from '../../../slices/modal-slice';
 import { AppDispatch } from '../../../store';
 
 const CheckoutButton: React.FC = (): React.ReactElement => {
@@ -12,7 +13,8 @@ const CheckoutButton: React.FC = (): React.ReactElement => {
     const buttonHandler = async () => {
         setButtonStatus('loading');
         await dispatch(requestCheckout());
-        setButtonStatus('disabled');
+        dispatch(showModal());
+        setButtonStatus('enabled');
     };
 
     return (

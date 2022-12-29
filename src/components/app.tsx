@@ -11,6 +11,7 @@ import {
     setIsCheckoutPanelCollapsed,
     setIsMobilePortrait,
 } from '../slices/common-slice';
+import Modal from './common/modals/modal';
 import { useLayoutEffect } from 'react';
 
 import './app.less';
@@ -43,6 +44,9 @@ export const App: React.FC = (): React.ReactElement => {
                 <Widget />
             </div>
             <Loader />
+            <Modal title="Checkout Successful">
+                <p>Your gift card was successfully purchase!</p>
+            </Modal>
         </div>
     );
 };

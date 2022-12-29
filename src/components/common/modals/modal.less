@@ -1,8 +1,18 @@
-@import '../media-queries.less';
-@import '../mixins.less';
+@import 'src/utils/styles/mixins.less';
+@import 'src/utils/styles/media-queries.less';
 
 .modal-body-open {
 	overflow: hidden;
+}
+
+.modal-wrapper {
+-color: rgba(0, 0, 0, 0.2);
+	width: 100vw;
+	height: 100vh;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	position: absolute;
 }
 
 .modal {

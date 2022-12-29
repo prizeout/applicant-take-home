@@ -4,11 +4,13 @@ import { AnyAction } from 'redux';
 import commonReducer, { commonInitialState } from './slices/common-slice';
 import offerConfigReducer, { offersInitialState } from './slices/offers-slice';
 import checkoutReducer, { checkoutInitialState } from './slices/checkout-slice';
+import modalReducer, { modalInitialState } from './slices/modal-slice';
 
 const store = configureStore({
     reducer: {
         checkout: checkoutReducer,
         common: commonReducer,
+        modal: modalReducer,
         offers: offerConfigReducer,
     },
 });
@@ -20,6 +22,7 @@ export type AppDispatch = typeof store.dispatch & ThunkDispatch<RootState, null,
 export const RootInitialState: RootState = {
     checkout: checkoutInitialState,
     common: commonInitialState,
+    modal: modalInitialState,
     offers: offersInitialState,
 };
 

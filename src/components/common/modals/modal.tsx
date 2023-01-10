@@ -27,7 +27,7 @@ const Modal: React.FC<ModalProps> = ({ children, onOk, title }): React.ReactElem
     }
 
     return (
-        <div className="modal-wrapper z-index-modal">
+        <div className="modal-wrapper z-index-modal" onClick={handleOkClick}>
             <div className="modal">
                 <div className="modal__inner">
                     <div className="modal__content">

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Classnames from 'classnames';
 import { PrizeoutOffer, PrizeoutOfferSettings } from '../../../../../slices/offers-slice';
 import { OfferGiftCard } from '../offer-gift-card/offer-gift-card';
@@ -16,12 +16,14 @@ interface OfferView {
 }
 
 const VerticalOffers: React.FC<OfferView> = ({ offers, viewSettings }): React.ReactElement => {
+    const [activeOfferId, setActiveOfferId] = useState('');
     const isCheckoutPanelCollapsedView = useAppSelector(selectIsCheckoutPanelCollapsed);
     const heading = viewSettings.title || 'Recommended for you';
     const classes: string = Classnames('vertical-offers');
     const dispatch = useDispatch<AppDispatch>();
 
     const offerClickHandler = (offer: PrizeoutOffer) => {
+        setActiveOfferId(offer.giftcard_list[0].checkout_value_id);
         if (isCheckoutPanelCollapsedView) {
             dispatch(toggleIsCollapsedCheckoutPanelOpen());
         }
@@ -30,6 +32,7 @@ const VerticalOffers: React.FC<OfferView> = ({ offers, viewSettings }): React.Re
     const returnOffers = () => {
         return offers.map((offer) => (
             <OfferGiftCard
+                activeOfferId={activeOfferId}
                 key={`${heading}-${offer.name}`}
                 offer={offer}
                 onClickHandler={() => offerClickHandler(offer)}

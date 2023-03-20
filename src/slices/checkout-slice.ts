@@ -1,15 +1,17 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../store';
-
+import { PrizeoutOffer } from './offers-slice';
 export interface CheckoutSlice {
     isCollapsedCheckoutPanelOpen: boolean;
     loading: boolean;
     view: ViewEnum;
+    data: PrizeoutOffer | null;
 }
 
 export type ViewEnum = 'checkout' | 'checkout-confirmation';
 
 export const checkoutInitialState: CheckoutSlice = {
+    data: null,
     isCollapsedCheckoutPanelOpen: false,
     loading: false,
     view: 'checkout',

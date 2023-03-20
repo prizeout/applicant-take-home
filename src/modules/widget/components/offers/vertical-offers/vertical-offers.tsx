@@ -25,7 +25,7 @@ const VerticalOffers: React.FC<OfferView> = ({ offers, viewSettings }): React.Re
         if (isCheckoutPanelCollapsedView) {
             dispatch(toggleIsCollapsedCheckoutPanelOpen());
         }
-        dispatch(setSelectedOffer(offer.giftcard_list[0].checkout_value_id));
+        dispatch(setSelectedOffer(offer));
     };
 
     const returnOffers = () => {
@@ -34,7 +34,7 @@ const VerticalOffers: React.FC<OfferView> = ({ offers, viewSettings }): React.Re
                 key={`${heading}-${offer.name}`}
                 offer={offer}
                 onClickHandler={() => offerClickHandler(offer)}
-                activeOfferId={selectedOffer}
+                activeOfferId={selectedOffer.giftcard_list[0].checkout_value_id}
             />
         ));
     };

@@ -36,7 +36,8 @@ export const commonSlice = createSlice({
     },
 });
 
-export const { setIsCheckoutPanelCollapsed, setIsMobilePortrait, toggleIsLoading, setSelectedOffer } = commonSlice.actions;
+export const { setIsCheckoutPanelCollapsed, setIsMobilePortrait, toggleIsLoading, setSelectedOffer } =
+    commonSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectLoading = ({ common: { loading } }: RootState): boolean => loading;

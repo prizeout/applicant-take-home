@@ -6,6 +6,7 @@ export interface CommonState {
     isCheckoutPanelCollapsedView: boolean;
     isMobilePortraitView: boolean;
     loading: boolean;
+    userSelectedOffer: string | null;
 }
 
 // Define the initial state using that type
@@ -13,6 +14,7 @@ export const commonInitialState: CommonState = {
     isCheckoutPanelCollapsedView: false,
     isMobilePortraitView: false,
     loading: false,
+    userSelectedOffer: null,
 };
 
 export const commonSlice = createSlice({
@@ -25,16 +27,21 @@ export const commonSlice = createSlice({
         setIsMobilePortrait(state, action: PayloadAction<boolean>) {
             state.isMobilePortraitView = action.payload;
         },
+        setSelectedOffer(state, action: PayloadAction<string>) {
+            state.userSelectedOffer = action.payload;
+        },
         toggleIsLoading(state) {
             state.loading = !state.loading;
         },
     },
 });
 
-export const { setIsCheckoutPanelCollapsed, setIsMobilePortrait, toggleIsLoading } = commonSlice.actions;
+export const { setIsCheckoutPanelCollapsed, setIsMobilePortrait, toggleIsLoading, setSelectedOffer } = commonSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectLoading = ({ common: { loading } }: RootState): boolean => loading;
+
+export const selectOffer = ({ common: { userSelectedOffer } }: RootState): string => userSelectedOffer;
 
 export const selectIsCheckoutPanelCollapsed = ({ common: { isCheckoutPanelCollapsedView } }: RootState): boolean =>
     isCheckoutPanelCollapsedView;

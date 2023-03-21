@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '../../common';
 import { useAppSelector } from '../../../hooks';
 import { selectOffer } from '../../../slices/common-slice';
@@ -8,7 +8,7 @@ const CheckoutButton: React.FC = (): React.ReactElement => {
     const selectedCheckoutOffer = useAppSelector(selectCheckoutValueOffer);
     const selectedOffer = useAppSelector(selectOffer);
 
-    const buttonText = 'Prizeout Gift Card';
+    const [buttonText, setButtonText] = useState('Prizeout Gift Card');
 
     const [buttonColor, setButtonColor] = React.useState<string>('primary');
     interface offerDataToPost {
@@ -35,8 +35,10 @@ const CheckoutButton: React.FC = (): React.ReactElement => {
             .then((data) => {
                 if (data.status === 200) {
                     setButtonColor('success');
+                    setButtonText('Congrats on Your Savings!');
                 } else {
                     setButtonColor('error');
+                    setButtonText('We are experiencing technical difficulties. Please try again!');
                 }
             })
             .catch((err) => console.log(err));

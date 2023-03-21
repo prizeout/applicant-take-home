@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Applicant take home test",
   "main": "src/index.tsx",
+  "engines": {
+    "node": ">=16.0.0 <17.0.0"
+  },
   "scripts": {
     "lint": "npx eslint ./src --fix",
     "start": "webpack-dev-server --config webpack.dev.js --port 8069 --host 0.0.0.0",

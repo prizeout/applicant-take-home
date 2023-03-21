@@ -3,7 +3,7 @@ import Classnames from 'classnames';
 import { PrizeoutOffer, PrizeoutOfferSettings } from '../../../../../slices/offers-slice';
 import { OfferGiftCard } from '../offer-gift-card/offer-gift-card';
 import { useAppSelector } from '../../../../../hooks';
-import { selectIsCheckoutPanelCollapsed, setSelectedOffer, selectOffer } from '../../../../../slices/common-slice';
+import { selectIsCheckoutPanelCollapsed, setSelectedOffer } from '../../../../../slices/common-slice';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../../../../store';
 import { toggleIsCollapsedCheckoutPanelOpen } from '../../../../../slices/checkout-slice';

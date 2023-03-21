@@ -7,7 +7,7 @@ import './offer-gift-card.less';
 
 interface OfferGiftCardProps {
     offer: PrizeoutOffer;
-    activeOfferId: string;
+    activeOfferId: string | null;
     onClickHandler: () => void;
 }
 

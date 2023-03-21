@@ -5,12 +5,14 @@ import { selectLoading, selectCheckoutView, setCheckoutView, ViewEnum } from '..
 
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../store';
-import { selectIsCheckoutPanelCollapsed } from '../../slices/common-slice';
+import { selectIsCheckoutPanelCollapsed, selectOffer } from '../../slices/common-slice';
+import { PrizeoutOffer } from '../../slices/offers-slice';
 
 export interface SetViewProps {
     isCheckoutPanelCollapsedView: boolean;
     isVisible: boolean;
     setView: (view: ViewEnum) => void;
+    offerData: PrizeoutOffer;
 }
 
 export function checkoutPanelViewWrapper<P>(
@@ -23,11 +25,10 @@ export function checkoutPanelViewWrapper<P>(
         const dispatch = useDispatch<AppDispatch>();
         const isCheckoutPanelLoading = useAppSelector(selectLoading);
         const isVisible = currentView == viewName;
-
+        const offerData = useAppSelector(selectOffer);
         const setView = (view: ViewEnum) => {
             dispatch(setCheckoutView(view));
         };
-
         const classes = Classnames(
             'checkout-panel__view',
             { 'checkout-panel__view--active': isVisible },
@@ -41,6 +42,7 @@ export function checkoutPanelViewWrapper<P>(
                     isCheckoutPanelCollapsedView={isCheckoutPanelCollapsedView}
                     isVisible={isVisible}
                     setView={setView}
+                    offerData={offerData}
                 />
             </div>
         );

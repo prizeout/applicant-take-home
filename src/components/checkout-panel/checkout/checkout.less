@@ -2,10 +2,38 @@
 
 .checkout {
 	padding: var(--space-inner);
-	
+
 	&__brand {
 		overflow: auto;
 	}
 }
 
+.giftCard-button-wrapper {
+	display: grid;
+	grid-template-columns: .2fr .2fr .2fr;
+	column-gap: 1fr;
+	justify-content: space-around;
+	row-gap: 1rem;
+}
 
+.checkout_line_item {
+	display: inline-flex;
+	grid-template-columns: 1fr 1fr;
+	column-gap: 1rem;
+	justify-content: space-between;
+
+	&.prizeout_line_item {
+		color: var(--color-primary);
+	}
+}
+
+.checkout_paper {
+	border: solid;
+	display: flex;
+	flex-direction: column;
+	border-radius: 10px;
+	padding: 10px;
+	margin-bottom: 30px;
+	height: 10em;
+	justify-content: space-between;
+}

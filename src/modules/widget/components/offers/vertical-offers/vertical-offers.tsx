@@ -20,12 +20,14 @@ const VerticalOffers: React.FC<OfferView> = ({ offers, viewSettings }): React.Re
     const heading = viewSettings.title || 'Recommended for you';
     const classes: string = Classnames('vertical-offers');
     const dispatch = useDispatch<AppDispatch>();
+    const [highlightOffer, setHighlightOffer] = React.useState<string | null>(null);
 
     const offerClickHandler = (offer: PrizeoutOffer) => {
         if (isCheckoutPanelCollapsedView) {
             dispatch(toggleIsCollapsedCheckoutPanelOpen());
         }
         dispatch(setSelectedOffer(offer));
+        setHighlightOffer(offer.giftcard_list[0].checkout_value_id);
     };
 
     const returnOffers = () => {
@@ -34,7 +36,7 @@ const VerticalOffers: React.FC<OfferView> = ({ offers, viewSettings }): React.Re
                 key={`${heading}-${offer.name}`}
                 offer={offer}
                 onClickHandler={() => offerClickHandler(offer)}
-                activeOfferId={selectedOffer.giftcard_list[0].checkout_value_id}
+                activeOfferId={highlightOffer}
             />
         ));
     };

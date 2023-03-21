@@ -1,4 +1,4 @@
-import React, { EventHandler, MouseEvent } from 'react';
+import React from 'react';
 import checkoutPanelViewWrapper from '../view-wrapper';
 import CheckoutButton from './checkout-button';
 import { selectOffer } from '../../../slices/common-slice';

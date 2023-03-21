@@ -16,7 +16,6 @@ interface OfferView {
 
 const VerticalOffers: React.FC<OfferView> = ({ offers, viewSettings }): React.ReactElement => {
     const isCheckoutPanelCollapsedView = useAppSelector(selectIsCheckoutPanelCollapsed);
-    const selectedOffer = useAppSelector(selectOffer);
     const heading = viewSettings.title || 'Recommended for you';
     const classes: string = Classnames('vertical-offers');
     const dispatch = useDispatch<AppDispatch>();

@@ -25,7 +25,7 @@ const CheckoutButton: React.FC = (): React.ReactElement => {
             name: selectedOffer.name,
             value_in_cents: selectedCheckoutOffer.value_in_cents,
         };
-        const response = fetch('#', {
+        fetch('#', {
             body: JSON.stringify(data),
             headers: {
                 'Content-type': 'application/json',

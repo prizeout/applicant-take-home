@@ -5,7 +5,6 @@ import { selectOffer } from '../../../slices/common-slice';
 import { selectCheckoutValueOffer } from '../../../slices/checkout-slice';
 
 const CheckoutButton: React.FC = (): React.ReactElement => {
-
     const selectedCheckoutOffer = useAppSelector(selectCheckoutValueOffer);
     const selectedOffer = useAppSelector(selectOffer);
 
@@ -24,7 +23,7 @@ const CheckoutButton: React.FC = (): React.ReactElement => {
             checkout_value_id: selectedCheckoutOffer.checkout_value_id,
             cost_in_cents: selectedCheckoutOffer.cost_in_cents,
             name: selectedOffer.name,
-            value_in_cents: selectedCheckoutOffer.value_in_cents
+            value_in_cents: selectedCheckoutOffer.value_in_cents,
         };
         const response = fetch('#', {
             body: JSON.stringify(data),

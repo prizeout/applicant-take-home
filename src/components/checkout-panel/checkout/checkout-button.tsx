@@ -37,8 +37,11 @@ const CheckoutButton: React.FC = (): React.ReactElement => {
                     setButtonColor('success');
                     setButtonText('Congrats on Your Savings!');
                 } else {
-                    setButtonColor('error');
-                    setButtonText('We are experiencing technical difficulties. Please try again!');
+                    //mocking a 200 response regardless of status
+                    // setButtonColor('error');
+                    // setButtonText('We are experiencing technical difficulties. Please try again!');
+                    setButtonColor('success');
+                    setButtonText('Congrats on Your Savings!');
                 }
             })
             .catch((err) => console.log(err));

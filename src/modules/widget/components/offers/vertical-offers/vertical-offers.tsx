@@ -1,6 +1,6 @@
 import React from 'react';
 import Classnames from 'classnames';
-import { PrizeoutOffer, PrizeoutOfferSettings } from '../../../../../slices/offers-slice';
+import { PrizeoutOffer, PrizeoutOfferSettings, setActiveOfferId, selectActiveOfferId } from '../../../../../slices/offers-slice';
 import { OfferGiftCard } from '../offer-gift-card/offer-gift-card';
 import { useAppSelector } from '../../../../../hooks';
 import { selectIsCheckoutPanelCollapsed } from '../../../../../slices/common-slice';
@@ -17,6 +17,7 @@ interface OfferView {
 
 const VerticalOffers: React.FC<OfferView> = ({ offers, viewSettings }): React.ReactElement => {
     const isCheckoutPanelCollapsedView = useAppSelector(selectIsCheckoutPanelCollapsed);
+    const activeOfferId = useAppSelector(selectActiveOfferId);
     const heading = viewSettings.title || 'Recommended for you';
     const classes: string = Classnames('vertical-offers');
     const dispatch = useDispatch<AppDispatch>();
@@ -24,6 +25,12 @@ const VerticalOffers: React.FC<OfferView> = ({ offers, viewSettings }): React.Re
     const offerClickHandler = (offer: PrizeoutOffer) => {
         if (isCheckoutPanelCollapsedView) {
             dispatch(toggleIsCollapsedCheckoutPanelOpen());
+        }
+        if (offer.giftcard_list[0].checkout_value_id !==  activeOfferId){
+            dispatch(setActiveOfferId(offer.giftcard_list[0].checkout_value_id));
+        // Unselect if already selected
+        } else {
+            dispatch(setActiveOfferId(null));
         }
     };
 

@@ -1,7 +1,8 @@
 import React from 'react';
 import Classnames from 'classnames';
+import { useAppSelector } from '../../../../../hooks';
 import { GiftCard, BonusTag } from '../../../../../components/common/';
-import { PrizeoutOffer } from '../../../../../slices/offers-slice';
+import { PrizeoutOffer, selectActiveOfferId } from '../../../../../slices/offers-slice';
 
 import './offer-gift-card.less';
 
@@ -11,7 +12,7 @@ interface OfferGiftCardProps {
 }
 
 export const OfferGiftCard: React.FC<OfferGiftCardProps> = ({ offer, onClickHandler }): React.ReactElement => {
-    let activeOfferId;
+    const activeOfferId = useAppSelector(selectActiveOfferId);
 
     const firstGiftCard = offer.giftcard_list[0];
     const offerType = firstGiftCard.display_monetary_bonus ? 'monetary' : 'percentage';

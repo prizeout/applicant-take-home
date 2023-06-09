@@ -1,13 +1,15 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../store';
 
 // Define a type for the slice state
 export interface OffersState {
+    activeOfferId?: string;
     offers?: PrizeoutOffers;
 }
 
 // Define the initial state
 export const offersInitialState: OffersState = {
+    activeOfferId: null,
     offers: [
         {
             data: [
@@ -702,9 +704,17 @@ type OffersRequest = {
 export const offersSlice = createSlice({
     initialState: offersInitialState,
     name: 'offers',
-    reducers: {},
+    reducers: {
+        setActiveOfferId(state, action: PayloadAction<string>) {
+            state.activeOfferId = action.payload;
+        },
+    },
 });
 
 export const selectOffers = ({ offers }: RootState): PrizeoutOffers => offers.offers;
+
+export const selectActiveOfferId = ({ offers }: RootState): string => offers.activeOfferId;
+
+export const { setActiveOfferId } = offersSlice.actions;
 
 export default offersSlice.reducer;

@@ -1,2 +1,6 @@
 {
+	/* Removed the presets here. As suggested by this stackoverflow answer:
+	 	https://stackoverflow.com/questions/56519158/cannot-find-module-babel-preset-env-from-path-did-you-mean-babel-env
+		This is because of changes to babel after version Babel 7 
+	*/
 }

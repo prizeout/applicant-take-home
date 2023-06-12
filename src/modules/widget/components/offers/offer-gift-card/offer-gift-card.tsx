@@ -9,16 +9,16 @@ import './offer-gift-card.less';
 interface OfferGiftCardProps {
     offer: PrizeoutOffer;
     onClickHandler: () => void;
+    inCheckout?: boolean;
 }
 
-export const OfferGiftCard: React.FC<OfferGiftCardProps> = ({ offer, onClickHandler }): React.ReactElement => {
+export const OfferGiftCard: React.FC<OfferGiftCardProps> = ({ offer, onClickHandler, inCheckout }): React.ReactElement => {
     const activeOfferId = useAppSelector(selectActiveOfferId);
-
     const firstGiftCard = offer.giftcard_list[0];
     const offerType = firstGiftCard.display_monetary_bonus ? 'monetary' : 'percentage';
     const offerValue = firstGiftCard.display_bonus;
     const classes: string = Classnames('offer-gift-card', {
-        'offer-gift-card--selected': activeOfferId === firstGiftCard.checkout_value_id,
+        'offer-gift-card--selected': activeOfferId === firstGiftCard.checkout_value_id && !inCheckout,
     });
 
     const selectOfferOnEnter = (event: React.KeyboardEvent<HTMLElement>) => {

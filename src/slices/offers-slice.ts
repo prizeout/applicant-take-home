@@ -715,6 +715,12 @@ export const selectOffers = ({ offers }: RootState): PrizeoutOffers => offers.of
 
 export const selectActiveOfferId = ({ offers }: RootState): string => offers.activeOfferId;
 
+export const selectActiveOffer = ({ offers }: RootState): PrizeoutOffer =>  {
+    return offers.offers[0].data.find((offer: any) => 
+        offer.giftcard_list[0].checkout_value_id === offers.activeOfferId
+    );
+}
+
 export const { setActiveOfferId } = offersSlice.actions;
 
 export default offersSlice.reducer;

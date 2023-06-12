@@ -30,7 +30,7 @@ const VerticalOffers: React.FC<OfferView> = ({ offers, viewSettings }): React.Re
     const offerClickHandler = (offer: PrizeoutOffer) => {
         if (offer.giftcard_list[0].checkout_value_id !== activeOfferId) {
             dispatch(setActiveOfferId(offer.giftcard_list[0].checkout_value_id));
-            // Wrap checkout panel toggle in offer conditional to prevent checkout panel 
+            // Wrap checkout panel toggle in offer conditional to prevent checkout panel
             // from opening when deselecting card
             if (isCheckoutPanelCollapsedView) {
                 dispatch(toggleIsCollapsedCheckoutPanelOpen());

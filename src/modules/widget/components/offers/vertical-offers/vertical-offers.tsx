@@ -1,6 +1,11 @@
 import React from 'react';
 import Classnames from 'classnames';
-import { PrizeoutOffer, PrizeoutOfferSettings, setActiveOfferId, selectActiveOfferId } from '../../../../../slices/offers-slice';
+import {
+    PrizeoutOffer,
+    PrizeoutOfferSettings,
+    setActiveOfferId,
+    selectActiveOfferId,
+} from '../../../../../slices/offers-slice';
 import { OfferGiftCard } from '../offer-gift-card/offer-gift-card';
 import { useAppSelector } from '../../../../../hooks';
 import { selectIsCheckoutPanelCollapsed } from '../../../../../slices/common-slice';
@@ -23,12 +28,14 @@ const VerticalOffers: React.FC<OfferView> = ({ offers, viewSettings }): React.Re
     const dispatch = useDispatch<AppDispatch>();
 
     const offerClickHandler = (offer: PrizeoutOffer) => {
-        if (isCheckoutPanelCollapsedView) {
-            dispatch(toggleIsCollapsedCheckoutPanelOpen());
-        }
-        if (offer.giftcard_list[0].checkout_value_id !==  activeOfferId){
+        if (offer.giftcard_list[0].checkout_value_id !== activeOfferId) {
             dispatch(setActiveOfferId(offer.giftcard_list[0].checkout_value_id));
-        // Unselect if already selected
+            // Wrap checkout panel toggle in offer conditional to prevent checkout panel 
+            // from opening when deselecting card
+            if (isCheckoutPanelCollapsedView) {
+                dispatch(toggleIsCollapsedCheckoutPanelOpen());
+            }
+            // Unselect if already selected
         } else {
             dispatch(setActiveOfferId(null));
         }

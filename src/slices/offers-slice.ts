@@ -5,6 +5,7 @@ import { RootState } from '../store';
 export interface OffersState {
     activeOfferId?: string;
     offers?: PrizeoutOffers;
+    selectedOption?: PrizeoutOfferValueOptions;
 }
 
 // Define the initial state
@@ -660,6 +661,7 @@ export const offersInitialState: OffersState = {
             type: 'vertical-offers',
         },
     ],
+    selectedOption: null,
 };
 
 type PrizeoutOffers = PrizeoutOfferViews[];
@@ -689,7 +691,7 @@ export type PrizeoutOffer = {
     tag: string;
 };
 
-type PrizeoutOfferValueOptions = {
+export type PrizeoutOfferValueOptions = {
     checkout_value_id: string;
     cost_in_cents: number;
     display_bonus?: number;
@@ -708,6 +710,9 @@ export const offersSlice = createSlice({
         setActiveOfferId(state, action: PayloadAction<string>) {
             state.activeOfferId = action.payload;
         },
+        setSelectedOption(state, action: PayloadAction<PrizeoutOfferValueOptions>) {
+            state.selectedOption = action.payload;
+        },
     },
 });
 
@@ -715,12 +720,14 @@ export const selectOffers = ({ offers }: RootState): PrizeoutOffers => offers.of
 
 export const selectActiveOfferId = ({ offers }: RootState): string => offers.activeOfferId;
 
+export const getActiveOptionId = ({ offers }: RootState): string => offers.selectedOption?.checkout_value_id || '';
+
 export const selectActiveOffer = ({ offers }: RootState): PrizeoutOffer => {
     return offers.offers[0].data.find(
         (offer: any) => offer.giftcard_list[0].checkout_value_id === offers.activeOfferId,
     );
 };
 
-export const { setActiveOfferId } = offersSlice.actions;
+export const { setActiveOfferId, setSelectedOption } = offersSlice.actions;
 
 export default offersSlice.reducer;

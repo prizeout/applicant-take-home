@@ -12,7 +12,11 @@ interface OfferGiftCardProps {
     inCheckout?: boolean;
 }
 
-export const OfferGiftCard: React.FC<OfferGiftCardProps> = ({ offer, onClickHandler, inCheckout }): React.ReactElement => {
+export const OfferGiftCard: React.FC<OfferGiftCardProps> = ({
+    offer,
+    onClickHandler,
+    inCheckout,
+}): React.ReactElement => {
     const activeOfferId = useAppSelector(selectActiveOfferId);
     const firstGiftCard = offer.giftcard_list[0];
     const offerType = firstGiftCard.display_monetary_bonus ? 'monetary' : 'percentage';

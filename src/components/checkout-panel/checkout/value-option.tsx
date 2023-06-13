@@ -13,15 +13,17 @@ interface ValueOptionProps {
 export const ValueOption: React.FC<ValueOptionProps> = ({ option, onClickHandler }): React.ReactElement => {
     const activeOptionId = useAppSelector(getActiveOptionId);
 
-    const classes: string = Classnames('value-option', {"value-option--selected": option.checkout_value_id === activeOptionId});
+    const classes: string = Classnames('value-option', {
+        'value-option--selected': option.checkout_value_id === activeOptionId,
+    });
 
-    const displayAmount = (option.value_in_cents / 100).toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+    const displayAmount = (option.value_in_cents / 100).toLocaleString('en-US', {
+        currency: 'USD',
+        style: 'currency',
+    });
 
     return (
-        <div
-            className={classes}
-            onClick={()=> onClickHandler()}
-        >
+        <div className={classes} onClick={() => onClickHandler()}>
             {displayAmount}
         </div>
     );

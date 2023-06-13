@@ -4,7 +4,7 @@ import CheckoutButton from './checkout-button';
 import { useAppSelector } from '../../../hooks';
 import { selectActiveOffer } from '../../../slices/offers-slice';
 import { OfferGiftCard } from '../../../modules/widget/components/offers/offer-gift-card/offer-gift-card';
-import { CheckoutSelector } from './checkout-selector';
+import { CheckoutSelector } from '../checkout-selector/checkout-selector';
 import './checkout.less';
 
 const CheckoutPanelView: React.FC = (): React.ReactElement => {

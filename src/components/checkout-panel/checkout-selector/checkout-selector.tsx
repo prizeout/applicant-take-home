@@ -1,7 +1,7 @@
 import React from 'react';
 import './checkout-selector.less';
 import { PrizeoutOffer, setSelectedOption } from '../../../slices/offers-slice';
-import { ValueOption } from './value-option';
+import { ValueOption } from '../value-options/value-option';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../../store';
 

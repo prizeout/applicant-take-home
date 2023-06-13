@@ -5,7 +5,7 @@ import {
     PrizeoutOfferSettings,
     setActiveOfferId,
     selectActiveOfferId,
-    setSelectedOption,
+    setChosenOption,
 } from '../../../../../slices/offers-slice';
 import { OfferGiftCard } from '../offer-gift-card/offer-gift-card';
 import { useAppSelector } from '../../../../../hooks';
@@ -29,8 +29,8 @@ const VerticalOffers: React.FC<OfferView> = ({ offers, viewSettings }): React.Re
     const dispatch = useDispatch<AppDispatch>();
 
     const offerClickHandler = (offer: PrizeoutOffer) => {
-        // reset selected option
-        dispatch(setSelectedOption(null));
+        // Reset chosen option
+        dispatch(setChosenOption(null));
         if (offer.giftcard_list[0].checkout_value_id !== activeOfferId) {
             dispatch(setActiveOfferId(offer.giftcard_list[0].checkout_value_id));
             // Wrap checkout panel toggle in offer conditional to prevent checkout panel

@@ -1,7 +1,7 @@
 import React from 'react';
 import Classnames from 'classnames';
 import { useAppSelector } from '../../../hooks';
-import { PrizeoutOfferValueOptions, getActiveOptionId } from '../../../slices/offers-slice';
+import { PrizeoutOfferValueOptions, selectChosenOptionId } from '../../../slices/offers-slice';
 
 import './value-option.less';
 
@@ -11,7 +11,7 @@ interface ValueOptionProps {
 }
 
 export const ValueOption: React.FC<ValueOptionProps> = ({ option, onClickHandler }): React.ReactElement => {
-    const activeOptionId = useAppSelector(getActiveOptionId);
+    const activeOptionId = useAppSelector(selectChosenOptionId);
 
     const classes: string = Classnames('value-option', {
         'value-option--selected': option.checkout_value_id === activeOptionId,

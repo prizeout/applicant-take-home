@@ -4,13 +4,14 @@ import { RootState } from '../store';
 // Define a type for the slice state
 export interface OffersState {
     activeOfferId?: string;
+    chosenOption?: PrizeoutOfferValueOptions;
     offers?: PrizeoutOffers;
-    selectedOption?: PrizeoutOfferValueOptions;
 }
 
 // Define the initial state
 export const offersInitialState: OffersState = {
     activeOfferId: null,
+    chosenOption: null,
     offers: [
         {
             data: [
@@ -661,7 +662,6 @@ export const offersInitialState: OffersState = {
             type: 'vertical-offers',
         },
     ],
-    selectedOption: null,
 };
 
 type PrizeoutOffers = PrizeoutOfferViews[];
@@ -710,8 +710,8 @@ export const offersSlice = createSlice({
         setActiveOfferId(state, action: PayloadAction<string>) {
             state.activeOfferId = action.payload;
         },
-        setSelectedOption(state, action: PayloadAction<PrizeoutOfferValueOptions>) {
-            state.selectedOption = action.payload;
+        setChosenOption(state, action: PayloadAction<PrizeoutOfferValueOptions>) {
+            state.chosenOption = action.payload;
         },
     },
 });
@@ -720,7 +720,9 @@ export const selectOffers = ({ offers }: RootState): PrizeoutOffers => offers.of
 
 export const selectActiveOfferId = ({ offers }: RootState): string => offers.activeOfferId;
 
-export const getActiveOptionId = ({ offers }: RootState): string => offers.selectedOption?.checkout_value_id || '';
+export const selectChosenOption = ({ offers }: RootState): PrizeoutOfferValueOptions | null => offers.chosenOption;
+
+export const selectChosenOptionId = ({ offers }: RootState): string => offers.chosenOption?.checkout_value_id || '';
 
 export const selectActiveOffer = ({ offers }: RootState): PrizeoutOffer => {
     return offers.offers[0].data.find(
@@ -728,6 +730,6 @@ export const selectActiveOffer = ({ offers }: RootState): PrizeoutOffer => {
     );
 };
 
-export const { setActiveOfferId, setSelectedOption } = offersSlice.actions;
+export const { setActiveOfferId, setChosenOption } = offersSlice.actions;
 
 export default offersSlice.reducer;

@@ -1,7 +1,7 @@
 import React from 'react';
 import './checkout-selector.less';
 import { CheckoutSummary } from '../checkout-summary/checkout-summary';
-import { PrizeoutOffer, setSelectedOption } from '../../../slices/offers-slice';
+import { PrizeoutOffer, setChosenOption } from '../../../slices/offers-slice';
 import { ValueOption } from '../value-options/value-option';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../../store';
@@ -14,7 +14,7 @@ export const CheckoutSelector: React.FC<CheckoutSelectorProps> = ({ offer }): Re
     const dispatch = useDispatch<AppDispatch>();
 
     const optionClickHandler = (option: any) => {
-        dispatch(setSelectedOption(option));
+        dispatch(setChosenOption(option));
     };
 
     const valueOptions = () => {

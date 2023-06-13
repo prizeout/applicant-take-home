@@ -9,7 +9,6 @@ import './checkout.less';
 
 const CheckoutPanelView: React.FC = (): React.ReactElement => {
     const offer = useAppSelector(selectActiveOffer);
-    console.log(offer);
     return (
         <section className="checkout">
             <div className="grid grid--top-bottom grid--stretch-top">

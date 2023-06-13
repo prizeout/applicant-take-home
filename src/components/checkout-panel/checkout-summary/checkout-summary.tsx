@@ -4,18 +4,18 @@ import { convertToUSD } from '../../../utils/conversions/currency';
 import './checkout-summary.less';
 
 export const CheckoutSummary: React.FC = (): React.ReactElement => {
-    const option = {value_in_cents: 1000};
+    const option = { value_in_cents: 1000 };
     const bonus = 0.25;
     const bonusString = `+${bonus * 100}%`;
     const amountInDollars = option.value_in_cents / 100;
-    const bonusAmount = amountInDollars * bonus
+    const bonusAmount = amountInDollars * bonus;
     const total = amountInDollars + bonusAmount;
 
     return (
         <div className="checkout-summary">
             <div className="summary-line">
                 <h5>Redemption Amount </h5>
-                <h5>{convertToUSD(amountInDollars)}</h5>    
+                <h5>{convertToUSD(amountInDollars)}</h5>
             </div>
             <div className="summary-line bonus">
                 <h5>Prizeout Bonus ({bonusString})</h5>
@@ -28,5 +28,3 @@ export const CheckoutSummary: React.FC = (): React.ReactElement => {
         </div>
     );
 };
-
-

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Classnames from 'classnames';
 import { PrizeoutOffer, PrizeoutOfferSettings } from '../../../../../slices/offers-slice';
 import { OfferGiftCard } from '../offer-gift-card/offer-gift-card';
@@ -20,16 +20,27 @@ const VerticalOffers: React.FC<OfferView> = ({ offers, viewSettings }): React.Re
     const heading = viewSettings.title || 'Recommended for you';
     const classes: string = Classnames('vertical-offers');
     const dispatch = useDispatch<AppDispatch>();
+    const [selectedOffer, setSelectedOffer] = useState<PrizeoutOffer | null>(null);
 
-    const offerClickHandler = () => {
+    const offerClickHandler = (offer: PrizeoutOffer) => {
         if (isCheckoutPanelCollapsedView) {
             dispatch(toggleIsCollapsedCheckoutPanelOpen());
         }
+        setSelectedOffer(offer);
     };
 
     const returnOffers = () => {
         return offers.map((offer) => (
-            <OfferGiftCard key={`${heading}-${offer.name}`} offer={offer} onClickHandler={() => offerClickHandler()} />
+            <OfferGiftCard
+                key={`${heading}-${offer.name}`}
+                style={{
+                    border: offer === selectedOffer ? '3px solid blue' : '1px solid transparent',
+                    margin: '5px',
+                    padding: '10px',
+                }}
+                offer={offer}
+                onClickHandler={() => offerClickHandler(offer)}
+            />
         ));
     };
 

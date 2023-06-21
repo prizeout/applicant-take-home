@@ -29,11 +29,7 @@ const VerticalOffers: React.FC<OfferView> = ({ offers, viewSettings }): React.Re
 
     const returnOffers = () => {
         return offers.map((offer) => (
-            <OfferGiftCard
-                key={`${heading}-${offer.name}`}
-                offer={offer}
-                onClickHandler={() => offerClickHandler()}
-            />
+            <OfferGiftCard key={`${heading}-${offer.name}`} offer={offer} onClickHandler={() => offerClickHandler()} />
         ));
     };
 

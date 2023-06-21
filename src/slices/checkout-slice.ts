@@ -2,21 +2,16 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../store';
 import { PrizeoutOffer } from '../slices/offers-slice';
 
-
-
 export interface CheckoutSlice {
     isCollapsedCheckoutPanelOpen: boolean;
     loading: boolean;
-    view: ViewEnum;
     giftCard: PrizeoutOffer;
+    view: ViewEnum;
 }
 
 export type ViewEnum = 'checkout' | 'checkout-confirmation';
 
 export const checkoutInitialState: CheckoutSlice = {
-    isCollapsedCheckoutPanelOpen: false,
-    loading: false,
-    view: 'checkout',
     giftCard: {
         checkout_hero_url: '',
         currency_code: '',
@@ -30,6 +25,9 @@ export const checkoutInitialState: CheckoutSlice = {
         support_creative_list: [],
         tag: '',
     },
+    isCollapsedCheckoutPanelOpen: false,
+    loading: false,
+    view: 'checkout',
 };
 
 export const checkoutSlice = createSlice({
@@ -39,26 +37,26 @@ export const checkoutSlice = createSlice({
         setCheckoutView(state, action: PayloadAction<ViewEnum>) {
             state.view = action.payload;
         },
+        setGiftCard(state, action: PayloadAction<PrizeoutOffer>) {
+            state.giftCard = action.payload;
+        },
         toggleIsCollapsedCheckoutPanelOpen(state) {
             state.isCollapsedCheckoutPanelOpen = !state.isCollapsedCheckoutPanelOpen;
         },
         toggleIsLoading(state) {
             state.loading = !state.loading;
         },
-        setGiftCard(state, action: PayloadAction<PrizeoutOffer>) {
-            state.giftCard = action.payload;
-        },
     },
 });
 
-export const { setCheckoutView, toggleIsCollapsedCheckoutPanelOpen, toggleIsLoading, setGiftCard } =
+export const { setCheckoutView, setGiftCard, toggleIsCollapsedCheckoutPanelOpen, toggleIsLoading } =
     checkoutSlice.actions;
 
 export const selectLoading = ({ checkout: { loading } }: RootState): boolean => loading;
 
-export const selectCheckoutView = ({ checkout: { view } }: RootState): ViewEnum => view;
+export const selectGiftCard = ({ checkout: { giftCard } }: RootState): PrizeoutOffer => giftCard;
 
-export const selectGiftCard = ({ checkout: { giftCard } }: RootState): PrizeoutOffer  => giftCard;
+export const selectCheckoutView = ({ checkout: { view } }: RootState): ViewEnum => view;
 
 export const selectIsCollapsedCheckoutPanelOpen = ({
     checkout: { isCollapsedCheckoutPanelOpen },

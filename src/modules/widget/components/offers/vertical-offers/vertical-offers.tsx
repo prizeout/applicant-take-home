@@ -21,7 +21,7 @@ const VerticalOffers: React.FC<OfferView> = ({ offers, viewSettings }): React.Re
     const classes: string = Classnames('vertical-offers');
     const dispatch = useDispatch<AppDispatch>();
 
-    const offerClickHandler = (offer: PrizeoutOffer) => {
+    const offerClickHandler = () => {
         if (isCheckoutPanelCollapsedView) {
             dispatch(toggleIsCollapsedCheckoutPanelOpen());
         }
@@ -32,7 +32,7 @@ const VerticalOffers: React.FC<OfferView> = ({ offers, viewSettings }): React.Re
             <OfferGiftCard
                 key={`${heading}-${offer.name}`}
                 offer={offer}
-                onClickHandler={() => offerClickHandler(offer)}
+                onClickHandler={() => offerClickHandler()}
             />
         ));
     };

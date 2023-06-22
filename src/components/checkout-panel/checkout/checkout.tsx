@@ -34,9 +34,15 @@ const CheckoutPanelView: React.FC<checkoutView> = ({ selectedGiftCard }): React.
                             {selectedGiftCard.giftcard_list
                                 ? selectedGiftCard.giftcard_list.map((values: any, index: number) => {
                                       return (
-                                          <button className= { index === selectedButton ? "gift-card-value active" : "gift-card-value"} 
-                                                key={index}
-                                                onClick={() => setSelectedButton(index)}>
+                                          <button
+                                              className={
+                                                  index === selectedButton
+                                                      ? 'gift-card-value active'
+                                                      : 'gift-card-value'
+                                              }
+                                              key={index}
+                                              onClick={() => setSelectedButton(index)}
+                                          >
                                               {formatter.format(values['cost_in_cents'] / 100)}
                                           </button>
                                       );

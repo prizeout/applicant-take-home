@@ -17,7 +17,7 @@ export const checkoutInitialState: CheckoutSlice = {
         currency_code: '',
         description: '',
         giftcard_list: [],
-        image_url: '',
+        image_url: 'https://d13080yemosbe2.cloudfront.net/Images/GiftCardFaceplates/External/EBOOKUL_fp01.png',
         is_enabled: false,
         logomark_url: '',
         name: '',

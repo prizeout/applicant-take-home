@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import checkoutPanelViewWrapper from '../view-wrapper';
 import CheckoutButton from './checkout-button';
 import { GiftCardImage } from '../../common/ui-widgets/gift-card-image';
@@ -9,7 +9,15 @@ interface checkoutView {
     selectedGiftCard?: any;
 }
 
+const formatter = new Intl.NumberFormat('en-US', {
+    currency: 'USD',
+    maximumFractionDigits: 2,
+    minimumFractionDigits: 2,
+    style: 'currency',
+});
+
 const CheckoutPanelView: React.FC<checkoutView> = ({ selectedGiftCard }): React.ReactElement => {
+    const [selectedButton, setSelectedButton] = useState<number | null>(null);
     return (
         <section className="checkout">
             <div className="grid grid--top-bottom grid--stretch-top">
@@ -26,9 +34,10 @@ const CheckoutPanelView: React.FC<checkoutView> = ({ selectedGiftCard }): React.
                             {selectedGiftCard.giftcard_list
                                 ? selectedGiftCard.giftcard_list.map((values: any, index: number) => {
                                       return (
-                                          <button className="gift-card-value" key={index}>
-                                              {' '}
-                                              {values['cost_in_cents']}{' '}
+                                          <button className= { index === selectedButton ? "gift-card-value active" : "gift-card-value"} 
+                                                key={index}
+                                                onClick={() => setSelectedButton(index)}>
+                                              {formatter.format(values['cost_in_cents'] / 100)}
                                           </button>
                                       );
                                   })

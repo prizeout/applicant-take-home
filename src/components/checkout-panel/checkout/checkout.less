@@ -1,11 +1,40 @@
 @import "../../../utils/styles/utility.less";
+@import '../../../utils/styles/mixins.less';
 
 .checkout {
+	@small-padding: .5rem 1.25rem;
+	@primary-background-color: var(--color-primary);
+	@primary-color: var(--color-white);
+
 	padding: var(--space-inner);
 	
 	&__brand {
 		overflow: auto;
 	}
+
+
+	.gift-card-values {
+		display: flex;
+		flex-wrap: wrap;
+		font-family: var(--font-family-primary);
+		font-weight: 700;
+		text-decoration: none;
+		line-height: 1;
+
+		.gift-card-value {
+			margin: 10px;
+			flex-basis: calc(20% - 10px);
+			border-radius: var(--border-radius-primary);
+			font-size: var(--font-size-s);
+			padding: @small-padding;
+			border: 1px solid transparent;
+
+			&.active {
+				background-color: @primary-background-color;
+				color: @primary-color;
+			}
+		}
+		
+	}
+
 }
-
-

@@ -1,0 +1,27 @@
+@import "../../../utils/styles/utility.less";
+@import '../../../utils/styles/mixins.less';
+
+.gift-card-redemption-container {
+    border-radius: var(--border-radius-primary);
+    font-family: var(--font-family-primary);
+    border: 1px solid #ccc;
+    padding: 20px 10px;
+    font-size: var(--font-size-m);
+    font-weight: 500;
+
+    .row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        &:last-child {
+            margin-bottom: 0;
+          }
+      }
+
+    .prizeout-bonus-label,
+    .prizeout-bonus-value {
+        color: var(--color-primary);
+        font-weight: 700;
+    }
+  }
+  

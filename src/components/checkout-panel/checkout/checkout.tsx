@@ -44,8 +44,11 @@ const CheckoutPanelView: React.FC<checkoutView> = ({ selectedGiftCard }): React.
                                                       : 'gift-card-value'
                                               }
                                               key={index}
-                                              onClick={() => { setSelectedButton(index); setSelectedValue(values);}
-                                            }>
+                                              onClick={() => {
+                                                  setSelectedButton(index);
+                                                  setSelectedValue(values);
+                                              }}
+                                          >
                                               {formatter.format(values['cost_in_cents'] / 100)}
                                           </button>
                                       );
@@ -56,7 +59,7 @@ const CheckoutPanelView: React.FC<checkoutView> = ({ selectedGiftCard }): React.
                 </div>
                 <div className="grid__item">
                     <section className="checkout__redemption">
-                        <CheckoutRedemption selectedValue={selectedValue}/>
+                        <CheckoutRedemption selectedValue={selectedValue} />
                     </section>
                 </div>
                 <div className="grid__item">

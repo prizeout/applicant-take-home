@@ -64,7 +64,7 @@ const CheckoutPanelView: React.FC<checkoutView> = ({ selectedGiftCard }): React.
                 </div>
                 <div className="grid__item">
                     <section className="checkout__calculation">
-                        <CheckoutButton selectedValue={selectedValue} giftCardName={selectedGiftCard.name}/>
+                        <CheckoutButton selectedValue={selectedValue} giftCardName={selectedGiftCard.name} />
                     </section>
                 </div>
             </div>

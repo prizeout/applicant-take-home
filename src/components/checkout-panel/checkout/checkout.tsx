@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import checkoutPanelViewWrapper from '../view-wrapper';
 import CheckoutButton from './checkout-button';
 import { GiftCardImage } from '../../common/ui-widgets/gift-card-image';
-
+import { CheckoutRedemption } from '../checkout-redemption/checkout-redemption';
+import { PrizeoutOffer } from '../../../slices/offers-slice';
 import './checkout.less';
 
 interface checkoutView {
-    selectedGiftCard?: any;
+    selectedGiftCard?: PrizeoutOffer;
 }
 
 const formatter = new Intl.NumberFormat('en-US', {
@@ -18,6 +19,8 @@ const formatter = new Intl.NumberFormat('en-US', {
 
 const CheckoutPanelView: React.FC<checkoutView> = ({ selectedGiftCard }): React.ReactElement => {
     const [selectedButton, setSelectedButton] = useState<number | null>(null);
+    const [selectedValue, setSelectedValue] = useState(null);
+
     return (
         <section className="checkout">
             <div className="grid grid--top-bottom grid--stretch-top">
@@ -41,8 +44,8 @@ const CheckoutPanelView: React.FC<checkoutView> = ({ selectedGiftCard }): React.
                                                       : 'gift-card-value'
                                               }
                                               key={index}
-                                              onClick={() => setSelectedButton(index)}
-                                          >
+                                              onClick={() => { setSelectedButton(index); setSelectedValue(values);}
+                                            }>
                                               {formatter.format(values['cost_in_cents'] / 100)}
                                           </button>
                                       );
@@ -50,6 +53,11 @@ const CheckoutPanelView: React.FC<checkoutView> = ({ selectedGiftCard }): React.
                                 : ''}
                         </div>
                     </div>
+                </div>
+                <div className="grid__item">
+                    <section className="checkout__redemption">
+                        <CheckoutRedemption selectedValue={selectedValue}/>
+                    </section>
                 </div>
                 <div className="grid__item">
                     <section className="checkout__calculation">
